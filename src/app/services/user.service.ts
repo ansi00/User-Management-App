@@ -8,6 +8,15 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   onLogin(obj: any) {
-    return this.http.post('https://projectapi.gerasim.in/api/UserApp/login', obj);
+    return this.http.post(
+      'https://projectapi.gerasim.in/api/UserApp/login',
+      obj
+    );
+  }
+
+  getUsers() {
+    return this.http.get(
+      'https://projectapi.gerasim.in/api/UserApp/GetAllUsers'
+    );
   }
 }
