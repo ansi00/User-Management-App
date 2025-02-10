@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../services/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-user',
@@ -11,7 +12,9 @@ import { UserService } from '../../services/user.service';
 })
 export class CreateUserComponent {
   userService = inject(UserService);
+  activatedRoute = inject(ActivatedRoute);
   loggedUserId: number = 0;
+  currentId: number = 0;
   userObj: any = {
     userId: 0,
     fullName: '',
@@ -30,13 +33,17 @@ export class CreateUserComponent {
       const parseData = JSON.parse(loggedUser);
       if (parseData.role == 'User') {
         this.loggedUserId = parseData.userId;
-        this.getUserById();
+        this.getUserById(this.loggedUserId);
       }
     }
+    this.activatedRoute.params.subscribe((res: any) => {
+      this.currentId = res.id;
+      this.getUserById(this.currentId);
+    });
   }
 
-  getUserById() {
-    this.userService.GetUserById(this.loggedUserId).subscribe((res: any) => {
+  getUserById(id: number) {
+    this.userService.GetUserById(id).subscribe((res: any) => {
       this.userObj = res.data;
     });
   }

@@ -24,9 +24,12 @@
           <td>{{ user.emailId }}</td>
           <td>{{ user.mobileNo }}</td>
           <td>{{ user.city }}</td>
-          <td>
-            <button (click)="onDelete(user.userId)" class="btn btn-danger">
+          <td class="text-center">
+            <button (click)="onDelete(user.userId)" class="btn btn-danger mx-2">
               Delete
+            </button>
+            <button (click)="onEdit(user.userId)" class="btn btn-danger">
+              Edit
             </button>
           </td>
         </tr>

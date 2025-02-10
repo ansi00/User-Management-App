@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -12,7 +12,7 @@ import { RouterLink } from '@angular/router';
 export class UserListComponent implements OnInit {
   userList: any[] = [];
   userService = inject(UserService);
-
+  router = inject(Router);
   ngOnInit(): void {
     this.loadUsers();
   }
@@ -34,5 +34,9 @@ export class UserListComponent implements OnInit {
         }
       });
     }
+  }
+
+  onEdit(id: number) {
+    this.router.navigate(['/editUser', id]);
   }
 }

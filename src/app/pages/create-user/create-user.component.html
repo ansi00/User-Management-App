@@ -90,7 +90,7 @@
           ></textarea>
         </div>
         <div class="col-12 pt-3">
-          @if (loggedUserId !== 0) {
+          @if (userObj.userId == 0) {
           <button class="btn btn-primary" type="submit" (click)="onSave()">
             Create User
           </button>
