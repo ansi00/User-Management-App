@@ -13,6 +13,7 @@
           <th>EmailId</th>
           <th>Mobile No</th>
           <th>City</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -23,6 +24,11 @@
           <td>{{ user.emailId }}</td>
           <td>{{ user.mobileNo }}</td>
           <td>{{ user.city }}</td>
+          <td>
+            <button (click)="onDelete(user.userId)" class="btn btn-danger">
+              Delete
+            </button>
+          </td>
         </tr>
         }
       </tbody>

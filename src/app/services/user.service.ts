@@ -19,4 +19,17 @@ export class UserService {
       'https://projectapi.gerasim.in/api/UserApp/GetAllUsers'
     );
   }
+
+  CreateNewUser(obj: any) {
+    return this.http.post(
+      'https://projectapi.gerasim.in/api/UserApp/CreateUser',
+      obj
+    );
+  }
+
+  deleteUserById(userId: number) {
+    return this.http.delete(
+      'https://projectapi.gerasim.in/api/UserApp/DeleteUserById?id=' + userId
+    );
+  }
 }

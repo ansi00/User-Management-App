@@ -22,4 +22,17 @@ export class UserListComponent implements OnInit {
       this.userList = res.data;
     });
   }
+
+  onDelete(id: number) {
+    const isDelete = confirm('Are you sure want to delete?');
+    if (isDelete) {
+      this.userService.deleteUserById(id).subscribe((res: any) => {
+        if (res.result) {
+          this.loadUsers();
+        } else {
+          alert(res.message);
+        }
+      });
+    }
+  }
 }
