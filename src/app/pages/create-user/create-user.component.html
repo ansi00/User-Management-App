@@ -8,6 +8,7 @@
             type="text"
             class="form-control"
             name="fullName"
+            [disabled]="loggedUserId != 0"
             [(ngModel)]="userObj.fullName"
             required
           />
@@ -21,6 +22,7 @@
               type="text"
               class="form-control"
               name="emailId"
+              [disabled]="loggedUserId != 0"
               [(ngModel)]="userObj.emailId"
               required
             />
@@ -33,6 +35,7 @@
             type="text"
             class="form-control"
             name="mobileNo"
+            [disabled]="loggedUserId != 0"
             [(ngModel)]="userObj.mobileNo"
             required
           />
@@ -44,6 +47,7 @@
             type="text"
             class="form-control"
             name="city"
+            [disabled]="loggedUserId != 0"
             [(ngModel)]="userObj.city"
             required
           />
@@ -55,6 +59,7 @@
             type="password"
             class="form-control"
             name="password"
+            [disabled]="loggedUserId != 0"
             [(ngModel)]="userObj.password"
             required
           />
@@ -67,6 +72,7 @@
           <textarea
             class="form-control"
             name="addressLine1"
+            [disabled]="loggedUserId != 0"
             [(ngModel)]="userObj.addressLine1"
             required
           ></textarea>
@@ -78,14 +84,21 @@
           <textarea
             class="form-control"
             name="addressLine2"
+            [disabled]="loggedUserId != 0"
             [(ngModel)]="userObj.addressLine2"
             required
           ></textarea>
         </div>
         <div class="col-12 pt-3">
+          @if (loggedUserId !== 0) {
           <button class="btn btn-primary" type="submit" (click)="onSave()">
             Create User
           </button>
+          }@else {
+          <button class="btn btn-warning" type="submit" (click)="onUpdate()">
+            Update Profile Pic
+          </button>
+          }
         </div>
       </form>
     </div>

@@ -22,7 +22,11 @@ export class LoginComponent {
     this.userService.onLogin(this.loginObj).subscribe((res: any) => {
       if (res.result) {
         localStorage.setItem('userApp', JSON.stringify(res.data));
-        this.router.navigateByUrl('user-list');
+        if (res.data.role == 'User') {
+          this.router.navigateByUrl('createUser');
+        } else {
+          this.router.navigateByUrl('user-list');
+        }
       } else {
         alert(res.message);
       }

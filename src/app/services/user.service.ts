@@ -32,4 +32,17 @@ export class UserService {
       'https://projectapi.gerasim.in/api/UserApp/DeleteUserById?id=' + userId
     );
   }
+
+  GetUserById(id: number) {
+    return this.http.get(
+      'https://projectapi.gerasim.in/api/UserApp/GetUserById?id=' + id
+    );
+  }
+
+  UpdateUser(obj: any) {
+    return this.http.put(
+      'https://projectapi.gerasim.in/api/UserApp/updateUser',
+      obj
+    );
+  }
 }
